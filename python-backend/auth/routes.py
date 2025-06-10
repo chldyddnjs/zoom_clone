@@ -78,3 +78,7 @@ def signin(user: UserLogin):
 @test_router.get("/all")
 def get_all_access():
     return {"message": "Public content accessible by anyone"}
+
+@test_router.get("/user")
+def get_user_access():
+    return {"message": "Content accessible by authenticated users"}

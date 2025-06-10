@@ -22,7 +22,7 @@ export default class BoardUser extends Component<Props, State> {
     UserService.getUserBoard().then(
       response => {
         this.setState({
-          content: response.data
+          content: response.data.message
         });
       },
       error => {
