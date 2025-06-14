@@ -15,6 +15,7 @@ import BoardModerator from "./components/board-moderator.component";
 import BoardAdmin from "./components/board-admin.component";
 
 import EventBus from "./common/EventBus";
+import MeetingRoom from "./components/meeting-room.component";
 
 type Props = {};
 
@@ -144,6 +145,7 @@ class App extends Component<Props, State> {
             <Route path="/user" element={<BoardUser />} />
             <Route path="/mod" element={<BoardModerator />} />
             <Route path="/admin" element={<BoardAdmin />} />
+            <Route path="/meeting-room" element={<MeetingRoom/>} />
           </Routes>
         </div>
 

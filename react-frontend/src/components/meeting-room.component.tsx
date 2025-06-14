@@ -1,4 +1,6 @@
-import React,{Component,createRef} from "react";
+import {Component,createRef} from "react";
+import VidieoPlayer from "./VideoPlayer.component";
+import ControlBar from "./ControlBar.component";
 
 type Props = {}
 type State = {
@@ -69,10 +71,16 @@ export class MeetingRoom extends Component<Props, State> {
         return(
             <div>
                 <div>
-                    VidieoPlayer
+                    <VidieoPlayer stream={stream} videoRef={this.videoRef}/>
                 </div>
                 <div>
-                    ControlBar
+                    <ControlBar
+                        onToggleMic={this.toggleMic}
+                        onToggleCamera={this.toggleCamera}
+                        onShareScreen={this.shareScreen}
+                        micOn={micOn}
+                        camOn={camOn}
+                    />
                 </div>
             </div>
             
