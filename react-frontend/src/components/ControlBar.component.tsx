@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import { Component } from "react";
 
 type Props = {
   onToggleMic: () => void;
@@ -7,13 +7,11 @@ type Props = {
   micOn: boolean;
   camOn: boolean;
 };
-type State = {};
 
-export default class ControlBar extends Component<Props,State> {
+export default class ControlBar extends Component<Props> {
     constructor(props:Props){
         super(props)
     }
-
     render() {
     const { onToggleMic, onToggleCamera, onShareScreen, micOn, camOn } = this.props;
 

@@ -7,6 +7,14 @@ type State = {
     stream: MediaStream|null;
     micOn: boolean;
     camOn: boolean;
+    constraints:{
+        audio:boolean,
+        video:{
+            width:{min:number,ideal:number,max:number}
+            height:{min:number,ideal:number,max:number}
+            frameRate:{ideal:number,max:number}
+        }
+    };
 }
 
 export class MeetingRoom extends Component<Props, State> {
@@ -16,17 +24,22 @@ export class MeetingRoom extends Component<Props, State> {
         
         this.state = {
             stream: null,
-            micOn: false,
-            camOn: false
+            micOn: true,
+            camOn: true,
+            constraints:{
+                audio: true,
+                video: { 
+                    width: { min: 1024, ideal: 1280, max: 1920 },
+                    height: { min: 576, ideal: 720, max: 1080 },
+                    frameRate: { ideal: 10, max: 15 }},
+                }
         };
     }
     
     async componentDidMount() {
         try {
-            const stream = await navigator.mediaDevices.getUserMedia({
-                audio: true,
-                video: true
-            });
+            const stream = await navigator.mediaDevices.getUserMedia(this.state.constraints);
+            
             this.setState({ stream });
             if (this.videoRef.current) {
                 this.videoRef.current.srcObject = stream;
