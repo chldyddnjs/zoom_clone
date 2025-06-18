@@ -12,12 +12,18 @@ export default class VidieoPlayer extends Component<Props> {
     
     render(){
         return (
-            <video
-             ref={this.props.videoRef}
-             autoPlay
-             playsInline
-             className="rouned-lg w-full h-auto"
-            />
+            <div className="container my-4">
+
+                <div className="ratio ratio-16x9 border border-secondary rounded shadow-sm">
+                    <video 
+                        // controls 
+                        ref={this.props.videoRef} 
+                        autoPlay
+                        playsInline
+                        className="w-100 h-100 rounded"
+                    />
+                </div>
+             </div>
         
         )
     }

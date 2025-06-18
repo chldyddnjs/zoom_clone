@@ -24,20 +24,24 @@ export default class Sidebar extends Component<Props,State>{
 
     render(){
         return (
-        <aside>
-          <h2>카테고리</h2>
-          <ul className="nav_links">
-                
-            {categories.map((category) => (
-            <li
-                key={category.id}
-                onClick={() => this.handleCategorySelect?.(category.id)}
-            >
-                <NavLink to={"/"+category.id}>{category.label}</NavLink>
-            </li>
-            ))}
-          </ul>
-        </aside>
+        <nav id="siderbarMenu" className="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+            <div className="position-sticky pt-3">
+                <h2>카테고리</h2>
+                <ul className="nav flex-column">
+                        
+                    {categories.map((category) => (
+                        <li
+                        className="nav-item"
+                        key={category.id}
+                        onClick={() => this.handleCategorySelect?.(category.id)}
+                        >
+                        <NavLink className="nav-link active" aria-current="page" to={"/"+category.id}>{category.label}</NavLink>
+                    </li>
+                    ))}
+                </ul>
+            </div>
+        </nav>
+        
         );
     };
 }

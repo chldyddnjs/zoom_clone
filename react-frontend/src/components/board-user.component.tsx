@@ -49,9 +49,9 @@ export default class BoardUser extends Component<Props, State> {
         <header className="jumbotron">
           <h3>{this.state.content}</h3>
         </header>
-        <body>
+
           <Sidebar/>
-        </body>
+
       </div>
     );
   }

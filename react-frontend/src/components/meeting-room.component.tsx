@@ -1,7 +1,8 @@
 import {Component,createRef} from "react";
+import { Container,Row,Col } from "react-bootstrap";
 import VidieoPlayer from "./VideoPlayer.component";
 import ControlBar from "./ControlBar.component";
-
+import ChatBox from "./ChatBox.component";
 type Props = {}
 type State = {
     stream: MediaStream|null;
@@ -82,20 +83,26 @@ export class MeetingRoom extends Component<Props, State> {
         const {stream,micOn,camOn} = this.state;
 
         return(
-            <div>
-                <div>
-                    <VidieoPlayer stream={stream} videoRef={this.videoRef}/>
-                </div>
-                <div>
-                    <ControlBar
-                        onToggleMic={this.toggleMic}
-                        onToggleCamera={this.toggleCamera}
-                        onShareScreen={this.shareScreen}
-                        micOn={micOn}
-                        camOn={camOn}
-                    />
-                </div>
-            </div>
+                
+            <Container fluid className="p-3">
+                <Row>
+                    <Col md={8} className="p-3">
+                        <VidieoPlayer stream={stream} videoRef={this.videoRef}/>
+                        <ControlBar
+                            onToggleMic={this.toggleMic}
+                            onToggleCamera={this.toggleCamera}
+                            onShareScreen={this.shareScreen}
+                            micOn={micOn}
+                            camOn={camOn}
+                            />
+                    </Col>
+        
+                    <Col md={4}>
+                        <ChatBox/>
+                    </Col>
+                
+                </Row>
+            </Container>
             
         )
     }
